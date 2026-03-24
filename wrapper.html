@@ -2,24 +2,34 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
   <title>来店きっかけアンケート</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: #FDF8F0; }
-    iframe { width: 100%; height: 100%; border: none; display: block; }
+    .frame-wrap {
+      width: 100%; height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    iframe {
+      width: 100%; height: 100%;
+      min-height: 100%;
+      border: none; display: block;
+    }
   </style>
 </head>
 <body>
-  <iframe id="frame"></iframe>
+  <div class="frame-wrap">
+    <iframe id="frame" scrolling="yes"></iframe>
+  </div>
   <script>
-    var GAS_BASE_URL = 'https://script.google.com/macros/s/AKfycbxpRd8tw7jS7KtcgtHYHWPGK3iarF-yySLc4T56dThOdKp3KXllaUafzD6GtFhU2sN2Jg/exec';
+    var GAS_BASE_URL = 'https://script.google.com/macros/s/AKfycbzeOuXLiQpXOl2m0ET9qZ8vXrh732JdxRUkaUPi749TTNB3xwG49iibtdy-kpvHCYU5Eg/exec';
 
     var params = new URLSearchParams(window.location.search);
-    var page = params.get('page') || '';
     var store = params.get('store') || '';
+    var page = params.get('page') || '';
 
     var src = GAS_BASE_URL;
     var gasParams = [];
