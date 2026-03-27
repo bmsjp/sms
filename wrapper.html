@@ -17,11 +17,15 @@ iframe{width:100%;height:100%;min-height:100%;border:none;display:block}
 <iframe id="frame" scrolling="yes"></iframe>
 </div>
 <script>
-var GAS_BASE_URL='https://script.google.com/macros/s/AKfycbymU-nRBSnHYEYWDOdb4Rm6qX25AwcQZTxSYsS-TYtGHvd7DH49Mxkk1wQH03Ptv2hghw/exec';
+var GAS_BASE_URL='https://script.google.com/macros/s/AKfycbwEN1YHqdtRBTzrDeTubpQYfyztQA65G2n9JeTDag2V0lk8YfYr_YJtR7V2-tFpbeZN/exec';
 var params=new URLSearchParams(window.location.search);
 var page=params.get('page')||'';
+var store=params.get('store')||'';
 var src=GAS_BASE_URL;
-if(page)src+='?page='+encodeURIComponent(page);
+var gp=['source=SMS'];
+if(page)gp.push('page='+encodeURIComponent(page));
+if(store)gp.push('store='+encodeURIComponent(store));
+src+='?'+gp.join('&');
 document.getElementById('frame').src=src;
 </script>
 </body>
